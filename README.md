@@ -25,6 +25,6 @@ django will start from the indx.html file of the react as per the template folde
 ```
 
 ## Demo
-https://mern-blog-hpgm.onrender.com/
+https://django-react-real-estate.onrender.com
 
 
