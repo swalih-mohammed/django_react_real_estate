@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const API_URL = 'http://127.0.0.1:8000/properties/'
-const API_URL_SEARCH = 'http://127.0.0.1:8000/properties/search/?search='
+const API_URL = 'https://django-react-real-estate.onrender.com/properties/'
+const API_URL_SEARCH = 'https://django-react-real-estate.onrender.com/properties/search/?search='
 
 // Get getProperties
 const getProperties = async () => {
