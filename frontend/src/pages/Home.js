@@ -35,6 +35,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { getProperties, getSearchedProperties, reset } from 'features/property/PropertySlice'
+import { AnimatePresence, motion } from 'framer-motion'
 
 // import { decrement, increment } from './counterSlice'
 
@@ -65,6 +66,7 @@ function Home() {
     const [loading, setLoading] = React.useState(false);
     const [isForSale, setIsForSale] = React.useState(true);
     const [isForRent, setIsForRent] = React.useState(false);
+    const [showTitle, setShowTitle] = React.useState(false);
     const [category, setCategory] = React.useState("All Types");
     const [searchText, setSearchText] = React.useState('');
 
@@ -104,9 +106,13 @@ function Home() {
         if (isError) {
             console.log(message)
         }
+        const timer = setTimeout(() => {
+            setShowTitle(true)
+        }, 2000)
 
         dispatch(getProperties())
         return () => {
+            clearTimeout(timer);
             dispatch(reset())
         }
 
@@ -120,13 +126,6 @@ function Home() {
         return `${place}, ${area}, ${emirate}`
     }
 
-    // if (isLoading) {
-    //     return (
-    //         <Box sx={{ display: 'flex', justifyContent: "center", alignitems: "center" }}>
-    //             <CircularProgress />
-    //         </Box>
-    //     )
-    // }
 
     return (
         <>
@@ -156,6 +155,25 @@ function Home() {
                         flexDirection="column"
                         sx={{ mx: "auto", textAlign: "center" }}
                     >
+                        <AnimatePresence initial={false}>
+                            {showTitle &&
+                                <motion.div initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}>
+                                    <MKTypography
+                                        variant="h2"
+                                        color="white"
+                                        sx={({ breakpoints, typography: { size } }) => ({
+                                            [breakpoints.down("md")]: {
+                                                fontSize: size["3xl"],
+                                            },
+                                        })}
+                                    >
+                                        Create your legacy in Dubai
+                                    </MKTypography>
+                                </motion.div>}
+                        </AnimatePresence>
+
 
                     </Grid>
                 </Container>

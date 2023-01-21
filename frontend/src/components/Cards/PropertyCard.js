@@ -32,6 +32,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import Grid from '@mui/material/Grid';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { motion } from 'framer-motion'
 
 const handleButtonClick = () => {
     const link = "https://wa.me/7207724191/"
@@ -41,91 +42,94 @@ const handleButtonClick = () => {
 
 function CenteredBlogCard({ image, title, address, price, description, action }) {
     return (
-        <Card>
-            <MKBox position="relative" borderRadius="lg" mx={2} mt={-3}>
+        <motion.div whileHover={{ scale: 1.1 }}>
+            <Card>
 
-                <MKBox
-                    component="img"
-                    src={image}
-                    alt={title}
-                    borderRadius="lg"
-                    width="100%"
-                    position="relative"
-                    zIndex={1}
-                />
+                <MKBox position="relative" borderRadius="lg" mx={2} mt={-3}>
 
-                <MKBox
-                    borderRadius="lg"
-                    shadow="md"
-                    width="100%"
-                    height="100%"
-                    position="absolute"
-                    left={0}
-                    top={0}
-                    sx={{
-                        backgroundImage: `url(${image})`,
-                        transform: "scale(0.94)",
-                        filter: "blur(12px)",
-                        backgroundSize: "cover",
-                    }}
-                />
-                {/* <MKBox position="relative" sx={{ zIndex: 2, top: -100, backgroundColor: "red" }}>
+                    <MKBox
+                        component="img"
+                        src={image}
+                        alt={title}
+                        borderRadius="lg"
+                        width="100%"
+                        position="relative"
+                        zIndex={1}
+                    />
+
+                    <MKBox
+                        borderRadius="lg"
+                        shadow="md"
+                        width="100%"
+                        height="100%"
+                        position="absolute"
+                        left={0}
+                        top={0}
+                        sx={{
+                            backgroundImage: `url(${image})`,
+                            transform: "scale(0.94)",
+                            filter: "blur(12px)",
+                            backgroundSize: "cover",
+                        }}
+                    />
+                    {/* <MKBox position="relative" sx={{ zIndex: 2, top: -100, backgroundColor: "red" }}>
                     <ArrowBackIosNewIcon color="red" size="large" />
                 </MKBox> */}
 
-            </MKBox>
-            <MKBox p={3} mt={-1} textAlign="flex-start">
-                <MKTypography
-                    variant="h6"
-                    color="dark"
-                    mb={1}
-                    sx={({ breakpoints, typography: { size } }) => ({
-                        [breakpoints.down("md")]: {
-                            fontSize: size["3xl"],
-                        },
-                    })}
-                >
-                    {title}
-                </MKTypography>
-                <MKTypography
-                    variant="p"
-                    color="dark"
-                    mb={1}
-                    sx={({ breakpoints, typography: { size } }) => ({
-                        [breakpoints.down("md")]: {
-                            fontSize: size["3xl"],
-                        },
-                    })}
-                >
-                    {address}
-                </MKTypography>
-                <MKBox mt={1} >
-                    <MKTypography display="inline" variant="p" textTransform="capitalize" fontWeight="regular" color="primary">
-                        {"AED "}
-                    </MKTypography>
-                    <MKTypography display="inline" variant="p" textTransform="capitalize" fontWeight="regular" color="primary">
-                        {price}
-                    </MKTypography>
                 </MKBox>
-                <MKBox mt={1} mb={3}>
-                    <MKTypography variant="body2" component="p" color="dark">
-                        {description}
+                <MKBox p={3} mt={-1} textAlign="flex-start">
+                    <MKTypography
+                        variant="h6"
+                        color="dark"
+                        mb={1}
+                        sx={({ breakpoints, typography: { size } }) => ({
+                            [breakpoints.down("md")]: {
+                                fontSize: size["3xl"],
+                            },
+                        })}
+                    >
+                        {title}
                     </MKTypography>
+                    <MKTypography
+                        variant="p"
+                        color="dark"
+                        mb={1}
+                        sx={({ breakpoints, typography: { size } }) => ({
+                            [breakpoints.down("md")]: {
+                                fontSize: size["1xl"],
+                            },
+                        })}
+                    >
+                        {address}
+                    </MKTypography>
+                    <MKBox mt={1} >
+                        <MKTypography display="inline" variant="p" textTransform="capitalize" fontWeight="regular" color="primary">
+                            {"AED "}
+                        </MKTypography>
+                        <MKTypography display="inline" variant="p" textTransform="capitalize" fontWeight="regular" color="primary">
+                            {price}
+                        </MKTypography>
+                    </MKBox>
+                    <MKBox mt={1} mb={3}>
+                        <MKTypography variant="body2" component="p" color="dark">
+                            {description}
+                        </MKTypography>
+                    </MKBox>
+                    <Grid container spacing={4}>
+                        <Grid item >
+                            <MKBox>
+                                <WhatsAppIcon onClick={handleButtonClick} fontSize='medium' sx={{ color: "#25d366" }} />
+                            </MKBox>
+                        </Grid>
+                        <Grid item >
+                            <MKBox>
+                                <ShareIcon fontSize='medium' sx={{ color: "#7d8597" }} />
+                            </MKBox>
+                        </Grid>
+                    </Grid>
                 </MKBox>
-                <Grid container spacing={4}>
-                    <Grid item >
-                        <MKBox>
-                            <WhatsAppIcon onClick={handleButtonClick} fontSize='medium' sx={{ color: "#25d366" }} />
-                        </MKBox>
-                    </Grid>
-                    <Grid item >
-                        <MKBox>
-                            <ShareIcon fontSize='medium' sx={{ color: "#7d8597" }} />
-                        </MKBox>
-                    </Grid>
-                </Grid>
-            </MKBox>
-        </Card>
+            </Card>
+        </motion.div>
     );
 }
 

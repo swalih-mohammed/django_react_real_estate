@@ -49,11 +49,13 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={theme} >
         <BrowserRouter>
+          <CssBaseline />
           <Navbar
             routes={routes}
             transparent
             light
           />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/list" element={<PropetyList />} />
@@ -64,9 +66,7 @@ function App() {
             </Fab>
           </Box>
 
-          <MKBox pt={6} px={1} mt={6}>
-            <DefaultFooter content={footerRoutes} />
-          </MKBox>
+
         </BrowserRouter>
       </ThemeProvider>
     </Provider>
