@@ -101,13 +101,7 @@ function PropetyList() {
         return `${place}, ${area}, ${emirate}`
     }
 
-    if (isLoading) {
-        return (
-            <Box sx={{ display: 'flex', justifyContent: "center", alignitems: "center" }}>
-                <CircularProgress />
-            </Box>
-        )
-    }
+
 
     return (
         <>
@@ -190,50 +184,46 @@ function PropetyList() {
                     </Grid>
                 </Container>
             </MKBox>
-            {/* <Grid container
-                spacing={0}
-                direction="column"
-                alignItems="center"
-                justifyContent="center"
-                style={{ minHeight: '20vh' }}
-            >
-                <Grid item xs={12}>
-                    <Typography variant="h4" gutterBottom>
-                        SEE ALL PROPERTIES
-                    </Typography>
-                </Grid>
-            </Grid> */}
-            <Grid container sx={{ mt: 10 }} spacing={4}>
-                {current_list?.map((sp) => (
-                    <Grid item key={sp.id} xs={12} sm={6} md={4}>
-                        <PropertyCard
-                            title={sp.title}
-                            description={sp.description}
-                            price={sp.price}
-                            address={address(sp.emirate, sp.area, sp.place)}
-                            image={"https://source.unsplash.com/random"}
-                            action={{
-                                type: "external",
-                                route: "#",
-                                color: "info",
-                                label: "Contact us",
-                            }}
-                        />
-                    </Grid>
-                ))}
-            </Grid>
 
-            <Grid container
-                spacing={0}
-                direction="column"
-                alignItems="center"
-                justifyContent="center"
-                style={{ minHeight: '20vh' }}
-            >
-                <Grid item xs={12}>
-                    <MKButton variant="contained" color="primary">View More..</MKButton>
-                </Grid>
-            </Grid>
+            {isLoading ?
+
+                <Box sx={{ display: 'flex', justifyContent: "center", alignitems: "center" }}>
+                    <CircularProgress />
+                </Box> :
+
+                <>
+                    <Grid container sx={{ mt: 10 }} spacing={4}>
+                        {current_list?.map((sp) => (
+                            <Grid item key={sp.id} xs={12} sm={6} md={4}>
+                                <PropertyCard
+                                    title={sp.title}
+                                    description={sp.description}
+                                    price={sp.price}
+                                    address={address(sp.emirate, sp.area, sp.place)}
+                                    image={"https://source.unsplash.com/random"}
+                                    action={{
+                                        type: "external",
+                                        route: "#",
+                                        color: "info",
+                                        label: "Contact us",
+                                    }}
+                                />
+                            </Grid>
+                        ))}
+                    </Grid>
+
+                    <Grid container
+                        spacing={0}
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        style={{ minHeight: '20vh' }}
+                    >
+                        <Grid item xs={12}>
+                            <MKButton variant="contained" color="primary">View More..</MKButton>
+                        </Grid>
+                    </Grid>
+                </>}
 
 
             {/* </Card> */}

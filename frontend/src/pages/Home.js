@@ -120,13 +120,13 @@ function Home() {
         return `${place}, ${area}, ${emirate}`
     }
 
-    if (isLoading) {
-        return (
-            <Box sx={{ display: 'flex', justifyContent: "center", alignitems: "center" }}>
-                <CircularProgress />
-            </Box>
-        )
-    }
+    // if (isLoading) {
+    //     return (
+    //         <Box sx={{ display: 'flex', justifyContent: "center", alignitems: "center" }}>
+    //             <CircularProgress />
+    //         </Box>
+    //     )
+    // }
 
     return (
         <>
@@ -228,94 +228,100 @@ function Home() {
                         </Grid>
                     </Container>
                 </MKBox>
-                <Grid container
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    style={{ minHeight: '20vh' }}
-                >
-                    <Grid item xs={12}>
-                        <Typography variant="h4" gutterBottom>
-                            PROPERTIES FOR SALE
-                        </Typography>
-                    </Grid>
-                </Grid>
-                <Grid container spacing={4}>
-                    {Property_for_sale?.map((sp) => (
-                        <Grid item key={sp.id} xs={12} sm={6} md={4}>
-                            <PropertyCard
-                                title={sp.title}
-                                description={sp.description}
-                                price={sp.price}
-                                address={address(sp.emirate, sp.area, sp.place)}
-                                image={"https://source.unsplash.com/random"}
-                                action={{
-                                    type: "external",
-                                    route: "#",
-                                    color: "info",
-                                    label: "Contact us",
-                                }}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
 
-                <Grid container
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    style={{ minHeight: '20vh' }}
-                >
-                    <Grid item xs={12}>
-                        <MKButton onClick={handle_search} variant="contained" color="primary">View More..</MKButton>
-                    </Grid>
-                </Grid>
-                <Grid container
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    style={{ minHeight: '25vh' }}
-                >
-                    <Grid item xs={12}>
-                        <Typography variant="h4" gutterBottom>
-                            PROPERTIES FOR RENT
-                        </Typography>
-                    </Grid>
-                </Grid>
-
-                <Grid container spacing={4}>
-                    {Property_for_rent?.map((rp) => (
-                        <Grid item key={rp.id} xs={12} sm={6} md={4}>
-                            <PropertyCard
-                                title={rp.title}
-                                description={rp.description}
-                                price={rp.price}
-                                address={address(rp.emirate, rp.area, rp.place)}
-                                image={"https://source.unsplash.com/random"}
-                                action={{
-                                    type: "external",
-                                    route: "#",
-                                    color: "info",
-                                    label: "Contact us",
-                                }}
-                            />
+                {isLoading ?
+                    <Box sx={{ display: 'flex', justifyContent: "center", alignitems: "center" }}>
+                        <CircularProgress />
+                    </Box> : <>
+                        <Grid container
+                            spacing={0}
+                            direction="column"
+                            alignItems="center"
+                            justifyContent="center"
+                            style={{ minHeight: '20vh' }}
+                        >
+                            <Grid item xs={12}>
+                                <Typography variant="h4" gutterBottom>
+                                    PROPERTIES FOR SALE
+                                </Typography>
+                            </Grid>
                         </Grid>
-                    ))}
-                </Grid>
-                <Grid container
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    style={{ minHeight: '25vh' }}
-                >
-                    <Grid item xs={12}>
-                        <MKButton onClick={handle_search} variant="contained" color="primary">View More..</MKButton>
-                    </Grid>
-                </Grid>
+                        <Grid container spacing={4}>
+                            {Property_for_sale?.map((sp) => (
+                                <Grid item key={sp.id} xs={12} sm={6} md={4}>
+                                    <PropertyCard
+                                        title={sp.title}
+                                        description={sp.description}
+                                        price={sp.price}
+                                        address={address(sp.emirate, sp.area, sp.place)}
+                                        image={"https://source.unsplash.com/random"}
+                                        action={{
+                                            type: "external",
+                                            route: "#",
+                                            color: "info",
+                                            label: "Contact us",
+                                        }}
+                                    />
+                                </Grid>
+                            ))}
+                        </Grid>
+
+                        <Grid container
+                            spacing={0}
+                            direction="column"
+                            alignItems="center"
+                            justifyContent="center"
+                            style={{ minHeight: '20vh' }}
+                        >
+                            <Grid item xs={12}>
+                                <MKButton onClick={handle_search} variant="contained" color="primary">View More..</MKButton>
+                            </Grid>
+                        </Grid>
+                        <Grid container
+                            spacing={0}
+                            direction="column"
+                            alignItems="center"
+                            justifyContent="center"
+                            style={{ minHeight: '25vh' }}
+                        >
+                            <Grid item xs={12}>
+                                <Typography variant="h4" gutterBottom>
+                                    PROPERTIES FOR RENT
+                                </Typography>
+                            </Grid>
+                        </Grid>
+
+                        <Grid container spacing={4}>
+                            {Property_for_rent?.map((rp) => (
+                                <Grid item key={rp.id} xs={12} sm={6} md={4}>
+                                    <PropertyCard
+                                        title={rp.title}
+                                        description={rp.description}
+                                        price={rp.price}
+                                        address={address(rp.emirate, rp.area, rp.place)}
+                                        image={"https://source.unsplash.com/random"}
+                                        action={{
+                                            type: "external",
+                                            route: "#",
+                                            color: "info",
+                                            label: "Contact us",
+                                        }}
+                                    />
+                                </Grid>
+                            ))}
+                        </Grid>
+                        <Grid container
+                            spacing={0}
+                            direction="column"
+                            alignItems="center"
+                            justifyContent="center"
+                            style={{ minHeight: '25vh' }}
+                        >
+                            <Grid item xs={12}>
+                                <MKButton onClick={handle_search} variant="contained" color="primary">View More..</MKButton>
+                            </Grid>
+                        </Grid>
+                    </>}
             </Card>
         </>
     );

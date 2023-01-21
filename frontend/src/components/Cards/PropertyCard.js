@@ -30,6 +30,8 @@ import MKButton from "components/MKButton";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ShareIcon from '@mui/icons-material/Share';
 import Grid from '@mui/material/Grid';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const handleButtonClick = () => {
     const link = "https://wa.me/7207724191/"
@@ -41,6 +43,7 @@ function CenteredBlogCard({ image, title, address, price, description, action })
     return (
         <Card>
             <MKBox position="relative" borderRadius="lg" mx={2} mt={-3}>
+
                 <MKBox
                     component="img"
                     src={image}
@@ -50,6 +53,7 @@ function CenteredBlogCard({ image, title, address, price, description, action })
                     position="relative"
                     zIndex={1}
                 />
+
                 <MKBox
                     borderRadius="lg"
                     shadow="md"
@@ -65,6 +69,10 @@ function CenteredBlogCard({ image, title, address, price, description, action })
                         backgroundSize: "cover",
                     }}
                 />
+                {/* <MKBox position="relative" sx={{ zIndex: 2, top: -100, backgroundColor: "red" }}>
+                    <ArrowBackIosNewIcon color="red" size="large" />
+                </MKBox> */}
+
             </MKBox>
             <MKBox p={3} mt={-1} textAlign="flex-start">
                 <MKTypography
