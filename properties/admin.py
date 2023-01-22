@@ -3,6 +3,7 @@ from django.contrib import admin
 from .models import Property, PropetyType
 
 # Register your models here.
+admin.site.site_header = 'Dubai Properties - Administration'
 
 
 class PropertyAdmin(admin.ModelAdmin):
