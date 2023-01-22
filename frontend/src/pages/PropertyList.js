@@ -30,6 +30,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Card_3 from "components/Cards/Card_3";
+
 
 // import MKButton from "components/MKButton";
 
@@ -192,37 +194,40 @@ function PropetyList() {
                 </Box> :
 
                 <>
-                    <Grid container sx={{ mt: 10 }} spacing={4}>
-                        {current_list?.map((sp) => (
-                            <Grid item key={sp.id} xs={12} sm={6} md={4}>
-                                <PropertyCard
-                                    title={sp.title}
-                                    description={sp.description}
-                                    price={sp.price}
-                                    address={address(sp.emirate, sp.area, sp.place)}
-                                    image={"https://source.unsplash.com/random"}
-                                    action={{
-                                        type: "external",
-                                        route: "#",
-                                        color: "info",
-                                        label: "Contact us",
-                                    }}
-                                />
-                            </Grid>
-                        ))}
-                    </Grid>
-
-                    <Grid container
-                        spacing={0}
-                        direction="column"
-                        alignItems="center"
-                        justifyContent="center"
-                        style={{ minHeight: '20vh' }}
-                    >
-                        <Grid item xs={12}>
-                            <MKButton variant="contained" color="primary">View More..</MKButton>
+                    <Container>
+                        <Grid container sx={{ mt: 10 }} spacing={4}>
+                            {current_list?.map((sp) => (
+                                <Grid item key={sp.id} xs={12} sm={6} md={4}>
+                                    {/* <PropertyCard */}
+                                    <Card_3
+                                        title={sp.title}
+                                        description={sp.description}
+                                        price={sp.price}
+                                        address={address(sp.emirate, sp.area, sp.place)}
+                                        image={"https://source.unsplash.com/random"}
+                                        action={{
+                                            type: "external",
+                                            route: "#",
+                                            color: "info",
+                                            label: "Contact us",
+                                        }}
+                                    />
+                                </Grid>
+                            ))}
                         </Grid>
-                    </Grid>
+
+                        <Grid container
+                            spacing={0}
+                            direction="column"
+                            alignItems="center"
+                            justifyContent="center"
+                            style={{ minHeight: '20vh' }}
+                        >
+                            <Grid item xs={12}>
+                                <MKButton variant="contained" color="primary">View More..</MKButton>
+                            </Grid>
+                        </Grid>
+                    </Container>
                 </>}
 
 

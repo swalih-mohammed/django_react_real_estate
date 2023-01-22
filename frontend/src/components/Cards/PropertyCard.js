@@ -32,7 +32,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import Grid from '@mui/material/Grid';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const handleButtonClick = () => {
     const link = "https://wa.me/7207724191/"
@@ -42,11 +42,9 @@ const handleButtonClick = () => {
 
 function CenteredBlogCard({ image, title, address, price, description, action }) {
     return (
-        <motion.div whileHover={{ scale: 1.1 }}>
+        <motion.div onPan={{ scale: 1.1 }}>
             <Card>
-
-                <MKBox position="relative" borderRadius="lg" mx={2} mt={-3}>
-
+                <MKBox position="relative" borderRadius="lg" mx={2} mt={-3} >
                     <MKBox
                         component="img"
                         src={image}
@@ -60,8 +58,8 @@ function CenteredBlogCard({ image, title, address, price, description, action })
                     <MKBox
                         borderRadius="lg"
                         shadow="md"
-                        width="100%"
-                        height="100%"
+                        width="80%"
+                        height="80%"
                         position="absolute"
                         left={0}
                         top={0}
@@ -72,10 +70,6 @@ function CenteredBlogCard({ image, title, address, price, description, action })
                             backgroundSize: "cover",
                         }}
                     />
-                    {/* <MKBox position="relative" sx={{ zIndex: 2, top: -100, backgroundColor: "red" }}>
-                    <ArrowBackIosNewIcon color="red" size="large" />
-                </MKBox> */}
-
                 </MKBox>
                 <MKBox p={3} mt={-1} textAlign="flex-start">
                     <MKTypography

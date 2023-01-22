@@ -36,6 +36,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { getProperties, getSearchedProperties, reset } from 'features/property/PropertySlice'
 import { AnimatePresence, motion } from 'framer-motion'
+import Card_3 from "components/Cards/Card_3";
 
 // import { decrement, increment } from './counterSlice'
 
@@ -173,8 +174,6 @@ function Home() {
                                     </MKTypography>
                                 </motion.div>}
                         </AnimatePresence>
-
-
                     </Grid>
                 </Container>
             </MKBox>
@@ -248,7 +247,7 @@ function Home() {
                 </MKBox>
 
                 {isLoading ?
-                    <Box sx={{ display: 'flex', justifyContent: "center", alignitems: "center" }}>
+                    <Box sx={{ display: 'flex', justifyContent: "center", alignitems: "center", height: '100vh' }}>
                         <CircularProgress />
                     </Box> : <>
                         <Grid container
@@ -267,12 +266,13 @@ function Home() {
                         <Grid container spacing={4}>
                             {Property_for_sale?.map((sp) => (
                                 <Grid item key={sp.id} xs={12} sm={6} md={4}>
-                                    <PropertyCard
+                                    {/* <PropertyCard */}
+                                    <Card_3
                                         title={sp.title}
                                         description={sp.description}
                                         price={sp.price}
                                         address={address(sp.emirate, sp.area, sp.place)}
-                                        image={"https://source.unsplash.com/random"}
+                                        // image={"https://source.unsplash.com/random"}
                                         action={{
                                             type: "external",
                                             route: "#",
@@ -312,7 +312,8 @@ function Home() {
                         <Grid container spacing={4}>
                             {Property_for_rent?.map((rp) => (
                                 <Grid item key={rp.id} xs={12} sm={6} md={4}>
-                                    <PropertyCard
+                                    {/* <PropertyCard */}
+                                    <Card_3
                                         title={rp.title}
                                         description={rp.description}
                                         price={rp.price}
