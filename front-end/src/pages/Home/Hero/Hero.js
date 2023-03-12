@@ -11,7 +11,8 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import Grid from '@mui/material/Grid';
 import bgImage from "assets/images/hero_2.jpg";
-
+import Autocomplete from '@mui/material/Autocomplete';
+import { useNavigate } from "react-router-dom";
 
 
 import Typography from '@mui/material/Typography';
@@ -20,8 +21,27 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 import Container from 'components/Container';
 
+// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
+const top100Films = [
+  { label: 'The Shawshank Redemption', year: 1994 },
+  { label: 'The Godfather', year: 1972 },
+  { label: 'The Godfather: Part II', year: 1974 },
+  { label: 'The Dark Knight', year: 2008 },
+  { label: '12 Angry Men', year: 1957 },
+  { label: "Schindler's List", year: 1993 },
+  { label: 'Pulp Fiction', year: 1994 },
+]
+
 const Hero = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
+
+  const handleSearch = (location) => {
+    // console.log(data)
+    // dispatch(getSearchedProperties(searchText))
+    navigate('/properties')
+  }
+
 
   return (
     <>
@@ -61,13 +81,17 @@ const Hero = () => {
           }}
         />
         <Container position={'relative'} zIndex={2}>
-          <Box>
+          <Box >
             <Box
               padding={{ xs: 3, sm: 6 }}
               width={1}
               component={Card}
               boxShadow={5}
               data-aos="fade-up"
+              sx={{
+                height: 200
+              }}
+
             >
               <form noValidate autoComplete="off">
                 <Box marginRight={{ xs: 0, md: 2 }}
@@ -115,13 +139,15 @@ const Hero = () => {
                     </Select>
                   </FormControl>
                 </Box>
-                <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }}>
+                <Box display="flex" flexDirection={{ xs: 'column', md: 'row', }} sx={{ mt: 2 }}
+                >
                   <Box
                     width={1}
                     marginRight={{ xs: 0, md: 2 }}
                     marginBottom={{ xs: 2, md: 0 }}
+
                   >
-                    <TextField
+                    {/* <TextField
                       sx={{
                         height: 40,
                       }}
@@ -152,6 +178,15 @@ const Hero = () => {
                           </InputAdornment>
                         ),
                       }}
+                    /> */}
+                    <Autocomplete
+                      // disablePortal
+                      hiddenLabel
+                      id="combo-box-demo"
+                      options={top100Films}
+                      fullWidth
+                      size="small"
+                      renderInput={(params) => <TextField size="large" {...params} label="Search for Neighbourhood, Citry or Building " />}
                     />
                   </Box>
                   <Box>
@@ -160,7 +195,9 @@ const Hero = () => {
                       variant="contained"
                       color="primary"
                       size="medium"
-                      fullWidth
+                      // fullWidth
+                      onClick={() => handleSearch("topmarket")}
+
 
                     >
                       Search
@@ -216,6 +253,7 @@ const Hero = () => {
             variant="text"
             color="primary"
             size="medium"
+            onClick={() => handleSearch("topmarket")}
           >
             Top Market
           </Button>
@@ -226,6 +264,7 @@ const Hero = () => {
             variant="text"
             color="primary"
             size="medium"
+            onClick={() => handleSearch("Palm Jumeirah")}
           >
             Palm Jumeirah
           </Button>
@@ -246,6 +285,8 @@ const Hero = () => {
             variant="text"
             color="primary"
             size="medium"
+            onClick={() => handleSearch("topmarket")}
+
           >
             Dubai Hills
           </Button>
@@ -256,6 +297,8 @@ const Hero = () => {
             variant="text"
             color="primary"
             size="medium"
+            onClick={() => handleSearch("topmarket")}
+
           >
             Arabian Ranches
           </Button>
@@ -266,6 +309,8 @@ const Hero = () => {
             variant="text"
             color="primary"
             size="medium"
+            onClick={() => handleSearch("topmarket")}
+
           >
             Downtown Dubai
           </Button>
@@ -276,6 +321,8 @@ const Hero = () => {
             variant="text"
             color="primary"
             size="medium"
+            onClick={() => handleSearch("topmarket")}
+
           >
             Jumeirah Golf Estates
           </Button>

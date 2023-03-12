@@ -9,6 +9,8 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { useNavigate } from "react-router-dom";
+
 
 const mock = [
   {
@@ -121,8 +123,12 @@ const mock = [
   },
 ];
 
+
+
 const TopProperties = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
+
   const [selectedType, setSelectedType] = React.useState("villa")
   const [filteredProperties, setFilteredProperties] = React.useState([])
 
@@ -138,6 +144,12 @@ const TopProperties = () => {
   React.useEffect(() => {
     selectedItems()
   }, [selectedType])
+
+  const handleClickDetail = (id) => {
+    console.log(id)
+    // dispatch(getSearchedProperties(searchText))
+    navigate('/detail')
+  }
 
   return (
     <Box marginBottom={4}>
@@ -346,6 +358,7 @@ const TopProperties = () => {
                   </Box>
                   <CardActions sx={{ justifyContent: 'flex-end' }}>
                     <Button
+                      onClick={() => handleClickDetail(1)}
                       endIcon={
                         <Box
                           component={'svg'}
@@ -365,7 +378,7 @@ const TopProperties = () => {
                         </Box>
                       }
                     >
-                      Learn more
+                      Explore
                     </Button>
                   </CardActions>
                 </CardContent>
