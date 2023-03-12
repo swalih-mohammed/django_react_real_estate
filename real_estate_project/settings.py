@@ -86,7 +86,7 @@ ROOT_URLCONF = 'real_estate_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-          'DIRS': [os.path.join(BASE_DIR, 'frontend/build')],
+          'DIRS': [os.path.join(BASE_DIR, 'front-end/build')],
         # 'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -169,7 +169,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/build/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'front-end/build/static')]
 
 if not DEBUG:
     # Tell Django to copy statics to the `staticfiles` directory
